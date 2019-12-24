@@ -1,0 +1,33 @@
+{
+  "name": "functions-template",
+  "version": "1.0.0",
+  "description": "Basic starting template for creating Lambda functions using Netlify/AWS.  Starts with basic git, GitPod, and Netlify configurations.",
+  "main": "index.js",
+  "scripts": {
+    "start": "netlify dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Error: no build specified\" && exit 1",
+    "deploy": "echo \"Error: no deploy specified\" && exit 1",
+    "watch": "echo \"Error: no watch specified\" && exit 1",
+    "docs": "echo \"Error: no docs specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svdarren/functions-template.git"
+  },
+  "keywords": [
+    "lambda",
+    "functions",
+    "netlify"
+  ],
+  "author": "svdarren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svdarren/functions-template/issues"
+  },
+  "homepage": "https://github.com/svdarren/functions-template#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "netlify-cli": "^2.24.0"
+  }
+}
