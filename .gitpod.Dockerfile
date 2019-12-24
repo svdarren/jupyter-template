@@ -10,5 +10,8 @@ USER gitpod
 #     sudo rm -rf /var/lib/apt/lists/*
 #
 # More information: https://www.gitpod.io/docs/42_config_docker/
-RUN npm update -g
-    
+
+RUN (cd /tmp; curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh)
+RUN bash /tmp/Anaconda3-2019.10-Linux-x86_64.sh
+RUN eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)"
+RUN conda init
