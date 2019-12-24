@@ -14,4 +14,4 @@ USER gitpod
 RUN (cd /tmp; curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh)
 RUN bash /tmp/Anaconda3-2019.10-Linux-x86_64.sh -b
 RUN eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)"
-RUN conda init
+# RUN conda init
