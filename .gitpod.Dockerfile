@@ -15,10 +15,11 @@ USER gitpod
 # && bash /tmp/Anaconda3-2019.10-Linux-x86_64.sh -b \
 # && eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)" \
 # && conda init
-# TODO fix conda/jupyter path
+
+# Put the Conda config script, which configures the path, into the bash startup script
+RUN { echo; echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc
 
 # Install conda from apt-get:  https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
-
 USER root
 # Install our public gpg key to trusted store
 RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg && \
