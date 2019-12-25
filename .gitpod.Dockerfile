@@ -11,8 +11,22 @@ USER gitpod
 #
 # More information: https://www.gitpod.io/docs/42_config_docker/
 
-RUN (cd /tmp; curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh) \
- && bash /tmp/Anaconda3-2019.10-Linux-x86_64.sh -b \
- && eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)" \
- && conda init
+#RUN (cd /tmp; curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh) \
+# && bash /tmp/Anaconda3-2019.10-Linux-x86_64.sh -b \
+# && eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)" \
+# && conda init
 # TODO fix conda/jupyter path
+
+# Install conda from apt-get:  https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
+
+USER root
+# Install our public gpg key to trusted store
+RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg && \
+    install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg && \
+    gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring \
+        --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806 && \
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] \
+         https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
+
+RUN sudo apt-get -q update && \
+    sudo apt-get install -yq conda
