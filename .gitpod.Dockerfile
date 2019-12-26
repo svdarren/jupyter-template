@@ -25,7 +25,8 @@ RUN sudo apt-get -q update && \
     sudo apt-get install -yq conda && \
     sudo /opt/conda/bin/conda update -n base -c defaults conda -y && \
     sudo /opt/conda/bin/conda config --system --append pkgs_dirs /workspace/.conda/pkgs && \
-    sudo /opt/conda/bin/conda config --system --prepend envs_dirs /workspace/.conda/envs --remove envs_dirs /home/gitpod/.conda/envs
+    sudo /opt/conda/bin/conda config --system --prepend envs_dirs /workspace/.conda/envs && \
+    sudo /opt/conda/bin/conda config --system --remove envs_dirs /home/gitpod/.conda/envs
 
 
 
