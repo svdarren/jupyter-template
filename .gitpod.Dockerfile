@@ -1,7 +1,5 @@
 FROM gitpod/workspace-full
 
-USER gitpod
-
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
 #
@@ -11,9 +9,7 @@ USER gitpod
 #
 # More information: https://www.gitpod.io/docs/42_config_docker/
 
-# Put the Conda config script, which configures the path, into the bash startup script
-RUN { echo; \
-      echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc
+
 
 # Install conda from apt-get:  https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
 USER root
@@ -27,7 +23,14 @@ RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmo
 
 RUN apt-get -q update && \
     apt-get install -yq conda && \
-    /opt/conda/bin/conda init -q && \
     /opt/conda/bin/conda update -n base -c defaults conda -y
 
+
+
+# Switch to the user to configure environment settings
 USER gitpod
+# Put the Conda config script, which configures the path, into the bash startup script
+# Also initialize the user shell for conda
+RUN { echo; \
+      echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc && \
+    /opt/conda/bin/conda init -q
