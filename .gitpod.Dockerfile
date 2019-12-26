@@ -21,21 +21,19 @@ RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmo
     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] \
          https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
 
-# Switch to the user to configure environment settings
-USER gitpod
-
 RUN sudo apt-get -q update && \
     sudo apt-get install -yq conda && \
     sudo /opt/conda/bin/conda update -n base -c defaults conda -y && \
-    ls -la /home/gitpod > /home/gitpod/perms1.log
+    sudo /opt/conda/bin/conda config --system --append pkgs_dirs /workspace/.conda/pkgs && \
+    sudo /opt/conda/bin/conda config --system --prepend envs_dirs /workspace/.conda/envs --remove envs_dirs /home/gitpod/.conda/envs
 
 
 
+# Switch to the user to configure environment settings
+USER gitpod
 
 # Put the Conda config script, which configures the path, into the bash startup script
 # Also initialize the user shell for conda
 RUN { echo; \
       echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc && \
-      ls -la /home/gitpod > /home/gitpod/perms2.log && \
-    /opt/conda/bin/conda init -q && \
-    ls -la /home/gitpod > /home/gitpod/perms3.log
+    /opt/conda/bin/conda init -q
