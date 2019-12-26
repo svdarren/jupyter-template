@@ -30,7 +30,7 @@ github:
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
   - before: git config --global user.email $GIT_COMMITTER_EMAIL
-    init: source ./.conda.sh
+    init: source ./.conda.sh && jupyter lab build
     prebuild: conda activate jup
     command: conda activate jup
 
