@@ -38,7 +38,7 @@ tasks:
   #- init: npm install # runs during prebuild
   #  command: npm start
 
-  - before: BREADCRUMB=$BREADCRUMB before && echo $BREADCRUMB
-    init: BREADCRUMB=$BREADCRUMB init && echo $BREADCRUMB
-    command: BREADCRUMB=$BREADCRUMB command && echo $BREADCRUMB
-    prebuild: BREADCRUMB=$BREADCRUMB prebuild && echo $BREADCRUMB
+  - before: BREADCRUMB=$BREADCRUMB" before" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" before" && echo $BREADCRUMB && echo $EXP_BREADCRUMB
+    init: BREADCRUMB=$BREADCRUMB" init" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" init" && echo $BREADCRUMB && echo $EXP_BREADCRUMB
+    command: BREADCRUMB=$BREADCRUMB" command" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" command" && echo $BREADCRUMB && echo $EXP_BREADCRUMB
+    prebuild: BREADCRUMB=$BREADCRUMB" prebuild" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" prebuild" && echo $BREADCRUMB && echo $EXP_BREADCRUMB
