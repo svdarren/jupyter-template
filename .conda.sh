@@ -9,7 +9,6 @@ if [ -f $CONDA_ENV_FILE ]; then
 
     # Create new conda env from file (answer yes to confirmation prompt)
     echo 'y' | conda env create -f $CONDA_ENV_FILE
-    conda env list
     conda activate $GP_CONDA_ENV
 
     # So that other bash terminals are also activated, add to .bashrc
