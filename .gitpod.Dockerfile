@@ -19,7 +19,6 @@ USER gitpod
 # Put the Conda config script, which configures the path, into the bash startup script
 RUN { echo; \
       echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc
-      #echo 'conda activate $(head -n 1 .conda.yml | cut -d':' -f2-)'} >> .bashrc
 
 # Install conda from apt-get:  https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
 USER root
