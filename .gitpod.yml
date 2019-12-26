@@ -29,7 +29,7 @@ github:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
-  - init: ./.conda.sh
+  - init: source ./.conda.sh
     command: git config --global user.email $GIT_COMMITTER_EMAIL
 
   #- command: ~/anaconda3/bin/jupyter notebook --NotebookApp.allow_origin=\'$(gp url 8888)\'
