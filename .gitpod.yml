@@ -43,6 +43,6 @@ tasks:
 #    prebuild: BREADCRUMB=$BREADCRUMB" prebuild" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" prebuild" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 
   - before: echo "before" && gp env
-    init: echo "init" && gp env
-    command: echo "command" && gp env
-    prebuild: echo "prebuild" && gp env
+  - init: echo "init" && gp env
+  - command: echo "command" && gp env
+  - prebuild: echo "prebuild" && gp env
