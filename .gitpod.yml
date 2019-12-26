@@ -42,7 +42,7 @@ tasks:
 #    command: BREADCRUMB=$BREADCRUMB" command" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" command" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 #    prebuild: BREADCRUMB=$BREADCRUMB" prebuild" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" prebuild" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 
-  - before: echo "before" && gp env
-  - init: echo "init" && gp env
-  - command: echo "command" && gp env
-  - prebuild: echo "prebuild" && gp env
+  - before: echo "before env= $GIT_COMMITTER_EMAIL"
+    init: echo "init env= $GIT_COMMITTER_EMAIL"
+    command: echo "command env= $GIT_COMMITTER_EMAIL"
+    prebuild: echo "prebuild env= $GIT_COMMITTER_EMAIL"
