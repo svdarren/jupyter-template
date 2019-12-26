@@ -27,4 +27,5 @@ RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmo
 
 RUN apt-get -q update && \
     apt-get install -yq conda && \
-    /opt/conda/bin/conda init -q
+    /opt/conda/bin/conda init -q && \
+    /opt/conda/bin/conda update -n base -c defaults conda -y
