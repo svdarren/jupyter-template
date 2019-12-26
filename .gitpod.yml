@@ -29,8 +29,11 @@ github:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
-  - init: echo 'y' | conda env create -f .conda.yml
-        #echo 'conda activate $(head -n 1 .conda.yml | cut -d':' -f2-)'} >> .bashrc
+  - init: if [ -f .conda.yml ]; then \
+      GP_CONDA_ENV=$(head -n 1 .conda.yml | cut -d':' -f2-); \
+      echo 'y' | conda env create -f .conda.yml; \
+      echo "conda activate $GP_CONDA_ENV" >> .bashrc \
+      fi
     command: git config --global user.email $GIT_COMMITTER_EMAIL
 
   #- command: ~/anaconda3/bin/jupyter notebook --NotebookApp.allow_origin=\'$(gp url 8888)\'
@@ -38,7 +41,7 @@ tasks:
   #- init: npm install # runs during prebuild
   #  command: npm start
 
-  - before: BREADCRUMB=$BREADCRUMB" before" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" before" && echo $BREADCRUMB && echo $EXP_BREADCRUMB
-    init: BREADCRUMB=$BREADCRUMB" init" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" init" && echo $BREADCRUMB && echo $EXP_BREADCRUMB
-    command: BREADCRUMB=$BREADCRUMB" command" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" command" && echo $BREADCRUMB && echo $EXP_BREADCRUMB
-    prebuild: BREADCRUMB=$BREADCRUMB" prebuild" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" prebuild" && echo $BREADCRUMB && echo $EXP_BREADCRUMB
+  - before: BREADCRUMB=$BREADCRUMB" before" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" before" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
+    init: BREADCRUMB=$BREADCRUMB" init" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" init" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
+    command: BREADCRUMB=$BREADCRUMB" command" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" command" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
+    prebuild: BREADCRUMB=$BREADCRUMB" prebuild" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" prebuild" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
