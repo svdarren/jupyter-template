@@ -32,7 +32,7 @@ tasks:
   - init: if [ -f .conda.yml ]; then \
       GP_CONDA_ENV=$(head -n 1 .conda.yml | cut -d':' -f2-); \
       echo 'y' | conda env create -f .conda.yml; \
-      echo "conda activate $GP_CONDA_ENV" >> .bashrc \
+      echo "conda activate $GP_CONDA_ENV" >> .bashrc; \
       fi
     command: git config --global user.email $GIT_COMMITTER_EMAIL
 
