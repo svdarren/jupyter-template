@@ -29,12 +29,8 @@ github:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
-#  - init: [ -f .conda.yml ] && { \
-#      GP_CONDA_ENV=$(head -n 1 .conda.yml | cut -d':' -f2-); \
-#      echo 'y' | conda env create -f .conda.yml; \
-#      echo "conda activate $GP_CONDA_ENV" >> .bashrc; \
-#      }
-  - command: git config --global user.email $GIT_COMMITTER_EMAIL
+  - init: ./.conda.sh
+    command: git config --global user.email $GIT_COMMITTER_EMAIL
 
   #- command: ~/anaconda3/bin/jupyter notebook --NotebookApp.allow_origin=\'$(gp url 8888)\'
   #- init: npm update -g && npm install netlify-cli -g && npm install netlify-lambda -g && npm install # runs during prebuild
@@ -45,3 +41,8 @@ tasks:
 #    init: BREADCRUMB=$BREADCRUMB" init" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" init" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 #    command: BREADCRUMB=$BREADCRUMB" command" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" command" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 #    prebuild: BREADCRUMB=$BREADCRUMB" prebuild" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" prebuild" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
+
+  - before: echo "before" && gp env
+    init: echo "init" && gp env
+    command: echo "command" && gp env
+    prebuild: echo "prebuild" && gp env
