@@ -11,11 +11,6 @@ USER gitpod
 #
 # More information: https://www.gitpod.io/docs/42_config_docker/
 
-#RUN (cd /tmp; curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh) \
-# && bash /tmp/Anaconda3-2019.10-Linux-x86_64.sh -b \
-# && eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)" \
-# && conda init
-
 # Put the Conda config script, which configures the path, into the bash startup script
 RUN { echo; \
       echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc

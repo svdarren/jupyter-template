@@ -1,9 +1,0 @@
-name: jupenv
-channels:
-  - defaults
-  - conda-forge
-dependencies:
-  - python=3.7
-  - jupyterlab-git
-prefix: /home/gitpod/anaconda3/envs/jupenv
-

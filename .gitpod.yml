@@ -37,4 +37,3 @@ tasks:
   #- init: npm update -g && npm install netlify-cli -g && npm install netlify-lambda -g && npm install # runs during prebuild
   #- init: npm install # runs during prebuild
   #  command: npm start
-#  - command: echo "Hello, World!""   # commands aren't processing while server is running
