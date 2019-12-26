@@ -33,19 +33,23 @@ tasks:
     init: source ./.conda.sh
     prebuild: conda activate jup
     command: conda activate jup
-  # command: git config --global user.email $GIT_COMMITTER_EMAIL && source ./.conda.sh
 
   #- command: ~/anaconda3/bin/jupyter notebook --NotebookApp.allow_origin=\'$(gp url 8888)\'
   #- init: npm update -g && npm install netlify-cli -g && npm install netlify-lambda -g && npm install # runs during prebuild
   #- init: npm install # runs during prebuild
   #  command: npm start
 
+
+###################
+# Debug artifacts #
+###################
+
 #  - before: BREADCRUMB=$BREADCRUMB" before" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" before" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 #    init: BREADCRUMB=$BREADCRUMB" init" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" init" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 #    command: BREADCRUMB=$BREADCRUMB" command" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" command" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 #    prebuild: BREADCRUMB=$BREADCRUMB" prebuild" && export EXP_BREADCRUMB=$EXP_BREADCRUMB" prebuild" && echo "$BREADCRUMB $GP_CONDA_ENV" && echo "$BREADCRUMB $GP_CONDA_ENV"
 
-  - before: echo "before env= $GIT_COMMITTER_EMAIL" >> /workspace/boot.log
-  - init: echo "init env= $GIT_COMMITTER_EMAIL" >> /workspace/boot.log
-  - command: echo "command env= $GIT_COMMITTER_EMAIL" >> /workspace/boot.log
-  - prebuild: echo "prebuild env= $GIT_COMMITTER_EMAIL" >> /workspace/boot.log
+#  - before: echo "before env= $GIT_COMMITTER_EMAIL" >> /workspace/boot.log
+#  - init: echo "init env= $GIT_COMMITTER_EMAIL" >> /workspace/boot.log
+#  - command: echo "command env= $GIT_COMMITTER_EMAIL" >> /workspace/boot.log
+#  - prebuild: echo "prebuild env= $GIT_COMMITTER_EMAIL" >> /workspace/boot.log
