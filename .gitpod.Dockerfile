@@ -1,7 +1,5 @@
 FROM gitpod/workspace-full
 
-USER gitpod
-
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
 #
@@ -11,15 +9,7 @@ USER gitpod
 #
 # More information: https://www.gitpod.io/docs/42_config_docker/
 
-#RUN (cd /tmp; curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh) \
-# && bash /tmp/Anaconda3-2019.10-Linux-x86_64.sh -b \
-# && eval "$(/home/gitpod/anaconda3/bin/conda shell.bash hook)" \
-# && conda init
 
-# Put the Conda config script, which configures the path, into the bash startup script
-RUN { echo; \
-      echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc
-      #echo 'conda activate $(head -n 1 .conda.yml | cut -d':' -f2-)'} >> .bashrc
 
 # Install conda from apt-get:  https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
 USER root
@@ -32,4 +22,19 @@ RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmo
          https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
 
 RUN sudo apt-get -q update && \
-    sudo apt-get install -yq conda
+    sudo apt-get install -yq conda && \
+    sudo /opt/conda/bin/conda update -n base -c defaults conda -y && \
+    sudo /opt/conda/bin/conda config --system --append pkgs_dirs /workspace/.conda/pkgs && \
+    sudo /opt/conda/bin/conda config --system --prepend envs_dirs /workspace/.conda/envs
+#    sudo /opt/conda/bin/conda config --system --remove envs_dirs /home/gitpod/.conda/envs
+
+
+
+# Switch to the user to configure environment settings
+USER gitpod
+
+# Put the Conda config script, which configures the path, into the bash startup script
+# Also initialize the user shell for conda
+RUN { echo; \
+      echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc && \
+    /opt/conda/bin/conda init -q
