@@ -23,7 +23,8 @@ RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmo
 
 RUN apt-get -q update && \
     apt-get install -yq conda && \
-    /opt/conda/bin/conda update -n base -c defaults conda -y
+    /opt/conda/bin/conda update -n base -c defaults conda -y && \
+    ls -la /home/gitpod > /home/gitpod/perms1.log
 
 
 
@@ -33,4 +34,6 @@ USER gitpod
 # Also initialize the user shell for conda
 RUN { echo; \
       echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc && \
-    /opt/conda/bin/conda init -q
+      ls -la /home/gitpod > /home/gitpod/perms2.log && \
+    /opt/conda/bin/conda init -q && \
+    ls -la /home/gitpod > /home/gitpod/perms3.log
