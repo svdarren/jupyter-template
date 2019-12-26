@@ -31,8 +31,7 @@ github:
 tasks:
 # TODO [environment is cleared if created during init](https://community.gitpod.io/t/home-dir-cleared-after-prebuild/249)
 #  - init: source ./.conda.sh
-  - command: git config --global user.email $GIT_COMMITTER_EMAIL && \
-      source ./.conda.sh
+  - command: git config --global user.email $GIT_COMMITTER_EMAIL && source ./.conda.sh
 
   #- command: ~/anaconda3/bin/jupyter notebook --NotebookApp.allow_origin=\'$(gp url 8888)\'
   #- init: npm update -g && npm install netlify-cli -g && npm install netlify-lambda -g && npm install # runs during prebuild
