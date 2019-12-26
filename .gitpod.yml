@@ -38,7 +38,7 @@ tasks:
   #- init: npm install # runs during prebuild
   #  command: npm start
 
-  - before: more timestamp.log >> timestamp.log && date >> timestamp.log && echo "END" >> timestamp.log
-    init: more timestamp.log >> timestamp.log && date >> timestamp.log && echo "END" >> timestamp.log
-    command: more timestamp.log >> timestamp.log && date >> timestamp.log && echo "END" >> timestamp.log
-    prebuild: more timestamp.log >> timestamp.log && date >> timestamp.log && echo "END" >> timestamp.log
+  - before: BREADCRUMB=$BREADCRUMB before && echo $BREADCRUMB
+    init: BREADCRUMB=$BREADCRUMB init && echo $BREADCRUMB
+    command: BREADCRUMB=$BREADCRUMB command && echo $BREADCRUMB
+    prebuild: BREADCRUMB=$BREADCRUMB prebuild && echo $BREADCRUMB
