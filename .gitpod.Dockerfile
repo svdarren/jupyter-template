@@ -29,3 +29,5 @@ RUN apt-get -q update && \
     apt-get install -yq conda && \
     /opt/conda/bin/conda init -q && \
     /opt/conda/bin/conda update -n base -c defaults conda -y
+
+USER gitpod
