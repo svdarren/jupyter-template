@@ -19,6 +19,8 @@ TODO: is there a conda equivalent to the npm scripts, aka 'npm start'?
 6. Continuous Deployment (CD)
 7. Log all experiments automatically
 
+* [Continuous Integration for your Jupyter Notebooks](https://blog.kovalevskyi.com/continues-integration-for-your-jupyter-notebooks-on-github-with-gcp-f72af5b08bcd)
+
 ## Conda
 
 ## GitPod
