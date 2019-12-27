@@ -20,6 +20,9 @@ TODO: is there a conda equivalent to the npm scripts, aka 'npm start'?
 7. Log all experiments automatically
 
 * [Continuous Integration for your Jupyter Notebooks](https://blog.kovalevskyi.com/continues-integration-for-your-jupyter-notebooks-on-github-with-gcp-f72af5b08bcd)
+* [Automating Jupyter Book deployments with CI/CD](https://predictablynoisy.com/automating-jb)
+* [CI Pipeline + test framework for Jupyter Notebooks](https://github.com/ReviewNB/support/issues/19)
+* [Jupyter CI](https://github.com/mwoodbri/jupyter-ci)
 
 ## Conda
 
