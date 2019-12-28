@@ -31,9 +31,10 @@ github:
 tasks:
   - before: git config --global user.email $GIT_COMMITTER_EMAIL
     init: pipenv install --dev && pipenv run jupyter lab build
+    # Note: don't use pipenv shell in prebuild. Since it never ends, neither does prebuild
+    prebuild: pipenv run echo "prebuild script ran"
     # Note: if starting the pipenv shell, it must be the last command in the script
     # Use `pipenv run` for shell commands prior to interactive mode
-    prebuild: pipenv shell
     command: pipenv shell
 
 
