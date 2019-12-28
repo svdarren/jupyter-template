@@ -1,10 +1,11 @@
 # Jupyter Notebooks template
-Template repo for making Jupyter Notebooks in Anaconda
+Template repo for making Jupyter Notebooks
 
 Go to the [GitHub wiki](https://github.com/svdarren/functions-template/wiki) for more background.
 
 ## Action List
-TODO: is there a conda equivalent to the npm scripts, aka 'npm start'?
+
+* Put to-do's here
 
 ## Workflow & CI/CD
 
@@ -25,7 +26,7 @@ TODO: is there a conda equivalent to the npm scripts, aka 'npm start'?
 * [Jupyter CI](https://github.com/mwoodbri/jupyter-ci)
 * [Papermill](https://github.com/nteract/papermill) - parameterize notebooks for command line calls (CI, etc.)
 
-## Conda
+## Python / pipenv
 
 ## GitPod
 
