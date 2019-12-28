@@ -31,3 +31,4 @@ Go to the [GitHub wiki](https://github.com/svdarren/functions-template/wiki) for
 ## GitPod
 
 * [Docker image](https://hub.docker.com/r/gitpod/workspace-full/dockerfile)
+
