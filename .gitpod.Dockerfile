@@ -9,32 +9,12 @@ FROM gitpod/workspace-full
 #
 # More information: https://www.gitpod.io/docs/42_config_docker/
 
-
-
-# Install conda from apt-get:  https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
+# Do things here as root
 USER root
-# Install our public gpg key to trusted store
-RUN curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg && \
-    install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg && \
-    gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring \
-        --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806 && \
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] \
-         https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" > /etc/apt/sources.list.d/conda.list
 
-RUN sudo apt-get -q update && \
-    sudo apt-get install -yq conda && \
-    sudo /opt/conda/bin/conda update -n base -c defaults conda -y && \
-    sudo /opt/conda/bin/conda config --system --append pkgs_dirs /workspace/.conda/pkgs && \
-    sudo /opt/conda/bin/conda config --system --prepend envs_dirs /workspace/.conda/envs
-#    sudo /opt/conda/bin/conda config --system --remove envs_dirs /home/gitpod/.conda/envs
-
+RUN sudo apt-get -q update
 
 
 # Switch to the user to configure environment settings
+# Environment settings in the YAML need the dockerfile to end as gitpod
 USER gitpod
-
-# Put the Conda config script, which configures the path, into the bash startup script
-# Also initialize the user shell for conda
-RUN { echo; \
-      echo 'source /opt/conda/etc/profile.d/conda.sh'; } >> .bashrc && \
-    /opt/conda/bin/conda init -q
