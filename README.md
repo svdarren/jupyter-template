@@ -23,6 +23,7 @@ TODO: is there a conda equivalent to the npm scripts, aka 'npm start'?
 * [Automating Jupyter Book deployments with CI/CD](https://predictablynoisy.com/automating-jb)
 * [CI Pipeline + test framework for Jupyter Notebooks](https://github.com/ReviewNB/support/issues/19)
 * [Jupyter CI](https://github.com/mwoodbri/jupyter-ci)
+* [Papermill](https://github.com/nteract/papermill) - parameterize notebooks for command line calls (CI, etc.)
 
 ## Conda
 
