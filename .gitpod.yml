@@ -30,14 +30,9 @@ github:
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
   - before: git config --global user.email $GIT_COMMITTER_EMAIL
-    init: source ./.conda.sh && jupyter lab build
-    prebuild: conda activate jup
-    command: conda activate jup
-
-  #- command: ~/anaconda3/bin/jupyter notebook --NotebookApp.allow_origin=\'$(gp url 8888)\'
-  #- init: npm update -g && npm install netlify-cli -g && npm install netlify-lambda -g && npm install # runs during prebuild
-  #- init: npm install # runs during prebuild
-  #  command: npm start
+    init: jupyter lab build
+    prebuild: echo
+    command: echo
 
 
 ###################
