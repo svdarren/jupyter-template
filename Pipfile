@@ -13,4 +13,4 @@ jupyterlab-git = "*"
 python_version = "3.7"
 
 [scripts]
-testline1 = 'echo "script is working, but no tests defined"'
+test = 'echo "script is working, but no tests defined"'
