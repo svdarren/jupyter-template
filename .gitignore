@@ -46,3 +46,4 @@ _site/
 # Dev tools #
 #############
 node_modules/
+.venv/
