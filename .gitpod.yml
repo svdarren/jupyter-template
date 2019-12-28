@@ -30,7 +30,9 @@ github:
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
   - before: git config --global user.email $GIT_COMMITTER_EMAIL
-    init: pipenv install --dev && jupyter lab build
+    init: pipenv install --dev && pipenv run jupyter lab build
+    # Note: if starting the pipenv shell, it must be the last command in the script
+    # Use `pipenv run` for shell commands prior to interactive mode
     prebuild: pipenv shell
     command: pipenv shell
 
