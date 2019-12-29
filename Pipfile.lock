@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c12f515e34b4bf8d629b7e3bc1c2997f9539ba51c80df6cbf88607ba3d09d7b1"
+            "sha256": "f94fc7620008a04e8a9603836558a245f47881678b9de5550def86a17e26be2b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -435,10 +435,18 @@
         },
         "trufflehog": {
             "hashes": [
-                "sha256:257102f17cb3d98cf93d03c0ae2f5a1f7c3c82ff8bbef43d0e609e07df8b6e45"
+                "sha256:0453b0810b979e7fd1e9f35b6430989117782a9412b9b049ddd94358514257ae",
+                "sha256:317c7fe67501cffaa40d53cdaf6a98d5c8ca1430e6881d33120796007cc4c4b5"
             ],
             "index": "pypi",
-            "version": "==2"
+            "version": "==2.0.99"
+        },
+        "trufflehogregexes": {
+            "hashes": [
+                "sha256:627e7cd246153135dea86bacd1253df262c525874f9008395ffe81eb63f92352",
+                "sha256:b81dfc60c86c1e353f436a0e201fd88edb72d5a574615a7858485c59edf32405"
+            ],
+            "version": "==0.0.7"
         },
         "urllib3": {
             "hashes": [

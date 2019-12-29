@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 jupyterlab = "*"
 jupyterlab-git = "*"
-trufflehog = "==2"
+trufflehog = "==2.*"
 
 [packages]
 
@@ -14,4 +14,5 @@ trufflehog = "==2"
 python_version = "3.7"
 
 [scripts]
+scan = 'bash .circleci/test_secretkeys.sh'
 test = 'echo "script is working, but no tests defined"'
