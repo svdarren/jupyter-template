@@ -73,8 +73,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "Pipfile.lock" }}
+            - v1-dependencies-{{ checksum "Pipfile.lock" }}-{{ checksum ".circleci/config.yml" }}
             # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum "Pipfile.lock" }}
             - v1-dependencies-
 
       - run:
@@ -86,7 +87,8 @@ jobs:
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies-{{ checksum "Pipfile.lock" }}
+            - ~/.local/share/virtualenvs
+          key: v1-dependencies-{{ checksum "Pipfile.lock" }}-{{ checksum ".circleci/config.yml" }}
 
       # run tests!
       # this example uses Django's built-in test-runner
