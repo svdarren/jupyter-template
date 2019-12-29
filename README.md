@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/svdarren/jupyter-template) 
+
 # Jupyter Notebooks template
 Template repo for making Jupyter Notebooks
 
