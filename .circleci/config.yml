@@ -81,6 +81,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
+            echo $TRUFFLEHOG_SINCE_COMMIT >> .env
             pip install pipenv
             pipenv install --dev
 
@@ -98,7 +99,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            pipenv run .circleci/test_secretkeys.sh
+            pipenv run scan
 
       - store_artifacts:
           path: test-reports
