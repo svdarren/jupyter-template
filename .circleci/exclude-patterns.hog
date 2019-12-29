@@ -1,0 +1,3 @@
+# Ignore lock files w/ hashes
+Pipfile.lock
+package-lock.json

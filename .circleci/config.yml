@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  test:
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
@@ -23,8 +23,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "Pipfile.lock" }}
+            - v1-dependencies-{{ checksum "Pipfile.lock" }}-{{ checksum ".circleci/config.yml" }}
             # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum "Pipfile.lock" }}
             - v1-dependencies-
 
       - run:
@@ -36,7 +37,8 @@ jobs:
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies-{{ checksum "Pipfile.lock" }}
+            - ~/.local/share/virtualenvs
+          key: v1-dependencies-{{ checksum "Pipfile.lock" }}-{{ checksum ".circleci/config.yml" }}
 
       # run tests!
       # this example uses Django's built-in test-runner
@@ -51,3 +53,63 @@ jobs:
       - store_artifacts:
           path: test-reports
           destination: test-reports
+
+  keysearch:
+    docker:
+      # specify the version you desire here
+      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
+      - image: circleci/python:3.7.4
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Pipfile.lock" }}-{{ checksum ".circleci/config.yml" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum "Pipfile.lock" }}
+            - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            echo $TRUFFLEHOG_SINCE_COMMIT >> .env
+            pip install pipenv
+            pipenv install --dev
+
+      - save_cache:
+          paths:
+            - ./venv
+            - ~/.local/share/virtualenvs
+          key: v1-dependencies-{{ checksum "Pipfile.lock" }}-{{ checksum ".circleci/config.yml" }}
+
+      # run tests!
+      # this example uses Django's built-in test-runner
+      # other common Python testing frameworks include pytest and nose
+      # https://pytest.org
+      # https://nose.readthedocs.io
+      - run:
+          name: run tests
+          command: |
+            pipenv run scan
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+
+workflows:
+  version: 2
+  Secret-Search:
+    jobs:
+      - keysearch
+  Test:
+    jobs:
+      - test
