@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 jupyterlab = "*"
 jupyterlab-git = "*"
+trufflehog = "==2"
 
 [packages]
 
