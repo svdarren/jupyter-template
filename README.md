@@ -2,8 +2,7 @@
 Template repo for making Jupyter Notebooks
 
 [![CircleCI](https://circleci.com/gh/svdarren/jupyter-template.svg?style=svg)](https://circleci.com/gh/svdarren/jupyter-template)
-
-[![Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/svdarren/jupyter-template)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/svdarren/jupyter-template) 
 
 
 Go to the [GitHub wiki](https://github.com/svdarren/functions-template/wiki) for more background.
