@@ -32,7 +32,7 @@ jobs:
           name: install dependencies
           command: |
             pip install pipenv
-            pipenv install --dev
+            pipenv sync --dev
 
       - save_cache:
           paths:
@@ -83,7 +83,7 @@ jobs:
           command: |
             echo $TRUFFLEHOG_SINCE_COMMIT >> .env
             pip install pipenv
-            pipenv install --dev
+            pipenv sync --dev
 
       - save_cache:
           paths:
